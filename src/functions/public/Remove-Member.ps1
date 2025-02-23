@@ -30,6 +30,10 @@
         .LINK
         https://psmodule.io/Object/Functions/Remove-Member
     #>
+    [Diagnostics.CodeAnalysis.SuppressMessageAttribute(
+        'PSUseShouldProcessForStateChangingFunctions', '',
+        Justification = 'Sets text in memory'
+    )]
     [CmdletBinding()]
     param(
         # Accept input from the pipeline.

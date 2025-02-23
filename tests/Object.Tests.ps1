@@ -23,5 +23,12 @@ Describe 'Object' {
             $object.PSObject.Properties | Should -Not -Contain 'Value'
             $object.PSObject.Properties | Should -Not -Contain 'Other'
         }
+
+        It 'Removes properties of classes' {
+            $object = [System.Net.WebClient]::new()
+            $object | Add-Member -MemberType NoteProperty -Name Something -Value 'http://example.com'
+            $object | Remove-Member -Name BaseAddress
+            $object.PSObject.Properties | Should -Not -Contain 'BaseAddress'
+        }
     }
 }
