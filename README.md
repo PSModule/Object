@@ -1,69 +1,53 @@
-# {{ NAME }}
+# Object
 
-{{ DESCRIPTION }}
+Object is a PowerShell module for working with PowerShell objects.
 
 ## Prerequisites
 
-This uses the following external resources:
-- The [PSModule framework](https://github.com/PSModule) for building, testing and publishing the module.
+- PowerShell with `Microsoft.PowerShell.PSResourceGet` available for `Install-PSResource`.
+- The [PSModule framework](https://github.com/PSModule) is used for building, testing, and publishing the module.
 
 ## Installation
 
-To install the module from the PowerShell Gallery, you can use the following command:
+Install the module from the PowerShell Gallery:
 
 ```powershell
-Install-PSResource -Name {{ NAME }}
-Import-Module -Name {{ NAME }}
+Install-PSResource -Name Object
+Import-Module -Name Object
 ```
+
+## Commands
+
+- `Remove-Member` removes one or more properties from objects passed through the pipeline. Use `-PassThru` to return the modified object.
 
 ## Usage
 
-Here is a list of example that are typical use cases for the module.
-
-### Example 1: Greet an entity
-
-Provide examples for typical commands that a user would like to do with the module.
+Remove a property and return the modified object:
 
 ```powershell
-Greet-Entity -Name 'World'
-Hello, World!
+$object = [PSCustomObject]@{
+	Name = 'Ada'
+	Age = 37
+	City = 'London'
+}
+
+$object | Remove-Member -Name Age -PassThru
 ```
 
-### Example 2
-
-Provide examples for typical commands that a user would like to do with the module.
+Remove multiple properties:
 
 ```powershell
-Import-Module -Name PSModuleTemplate
+$object | Remove-Member -Name Age, City -PassThru
 ```
 
-### Find more examples
+## Examples
 
-To find more examples of how to use the module, please refer to the [examples](examples) folder.
-
-Alternatively, you can use the Get-Command -Module 'This module' to find more commands that are available in the module.
-To find examples of each of the commands you can use Get-Help -Examples 'CommandName'.
+More usage examples are available in the [examples](examples) folder.
 
 ## Documentation
 
-Link to further documentation if available, or describe where in the repository users can find more detailed documentation about
-the module's functions and features.
+Command documentation is published at [psmodule.io/Object](https://psmodule.io/Object/).
 
 ## Contributing
 
-Coder or not, you can contribute to the project! We welcome all contributions.
-
-### For Users
-
-If you don't code, you still sit on valuable information that can make this project even better. If you experience that the
-product does unexpected things, throw errors or is missing functionality, you can help by submitting bugs and feature requests.
-Please see the issues tab on this project and submit a new issue that matches your needs.
-
-### For Developers
-
-If you do code, we'd love to have your contributions. Please read the [Contribution guidelines](CONTRIBUTING.md) for more information.
-You can either help by picking up an existing issue or submit a new one if you have an idea for a new feature or improvement.
-
-## Acknowledgements
-
-Here is a list of people and projects that helped this project in some way.
+Issues and pull requests are welcome. Please use the repository issue tracker to report bugs, request features, or discuss improvements.
